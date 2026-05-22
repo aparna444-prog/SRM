@@ -14,12 +14,16 @@ public class DeleteUser {
     UserRepo db;
 
     @DeleteMapping("/api/delete/{id}")
-    public String deleteUser(@PathVariable int id) {
+    public String deleteUser(@PathVariable Long id) {
 
         if (db.existsById(id)) {
+
             db.deleteById(id);
+
             return "User deleted successfully ✅";
+
         } else {
+
             return "User not found ❌";
         }
     }
